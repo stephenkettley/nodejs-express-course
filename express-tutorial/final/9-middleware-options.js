@@ -7,12 +7,11 @@ const morgan = require("morgan");
 
 // req => middleware => res
 
-// app.use([logger, authorize]); // this will apply only to routes below it - can use multiple middleware functions (they will execute in order)
-// app.use("/api",logger) this will be applied to all routes with /api
+app.use([logger, authorize]); // create your own functional middleware
 
-// app.use(express.static("./public"));
+app.use(express.static("./public")); // express middleware
 
-app.use(morgan("tiny"));
+app.use(morgan("tiny")); // third party
 
 app.get("/", (req, res) => {
   res.send("Home");
